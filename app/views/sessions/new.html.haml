@@ -1,0 +1,6 @@
+= link_to 'sign up', '/sign_up'
+= form_tag session_path do |f|
+  = flash[:error]
+  = text_field_tag :nickname, '', placeholder: 'nickname'
+  = password_field_tag :password, '', placeholder: 'password'
+  = submit_tag 'log in'

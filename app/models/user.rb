@@ -1,0 +1,24 @@
+class User
+  include Mongoid::Document
+  
+  field :nickname, type: String
+  field :email, type: String
+  field :password, type: String
+  field :sign_in_count, type: Integer, default: 0
+  
+  validates :password,
+            confirmation: true,
+            presence: { on: :update }
+            
+  validates :nickname,
+            uniqueness: true,
+            presence: true,
+            length: { maximum: 4 }
+  
+  validates :email,
+            presence: true
+            
+  def increment_sign_in_count
+    self.inc :sign_in_count, 1
+  end
+end
