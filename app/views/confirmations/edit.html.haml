@@ -1,7 +1,7 @@
-= form_for user, :url => confirmation_url(user) do |f|
-  - if user.errors.any?
+= form_for confirmation do |f|
+  - if confirmation.errors.any?
     %ul
-    - user.errors.full_messages.each do |msg|
+    - confirmation.errors.full_messages.each do |msg|
       %li #{msg}
   = f.password_field :password, placeholder: 'password'
   = f.password_field :password_confirmation, placeholder: 'password confirmation'

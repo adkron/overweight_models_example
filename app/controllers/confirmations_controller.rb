@@ -1,9 +1,9 @@
 class ConfirmationsController < ApplicationController
   respond_to :html
-  expose(:user)
+  expose(:confirmation)
   
   def update
-    user.save
-    respond_with user, :location => root_path  
+    confirmation.complete
+    respond_with confirmation, :location => root_path  
   end
 end

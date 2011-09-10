@@ -29,7 +29,7 @@ class SignUp
     self.email = params.try(:[],:email)
   end
   
-  def save
+  def complete
     user.save if valid?
   end
   
