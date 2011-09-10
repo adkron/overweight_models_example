@@ -13,7 +13,7 @@ class User
   validates :nickname,
             uniqueness: true,
             presence: true,
-            length: { maximum: 4 }
+            length: { minimum: 5, maximum: 8 }
   
   validates :email,
             presence: true
