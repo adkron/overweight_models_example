@@ -19,6 +19,7 @@ class User
             presence: true
             
   def increment_sign_in_count
-    self.inc :sign_in_count, 1
+    self.sign_in_count += 1
+    self.save
   end
 end
