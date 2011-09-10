@@ -1,7 +1,7 @@
-= form_for user, :url => sign_up_path do |f|
-  - if user.errors.any?
+= form_for sign_up do |f|
+  - if sign_up.errors.any?
     %ul
-    - user.errors.full_messages.each do |msg|
+    - sign_up.errors.full_messages.each do |msg|
       %li #{msg}
   = f.text_field :nickname, placeholder: 'nickname'
   = f.email_field :email, placeholder: 'email@example.com'

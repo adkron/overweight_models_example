@@ -1,6 +1,5 @@
 OverweightModelsExample::Application.routes.draw do
-  get 'sign_up', to: 'sign_up#new'
-  post 'sign_up', to: 'sign_up#create'
+  resource :sign_ups, only: [:new, :create]
   
   resources :confirmations, only: [:edit, :update]
   resources :users, only: [:show]

@@ -6,17 +6,11 @@ class User
   field :password, type: String
   field :sign_in_count, type: Integer, default: 0
   
+  scope :sign_up, lambda {|nickname, email| where(:nickname => nickname, :email => email) }
+  
   validates :password,
             confirmation: true,
             presence: { on: :update }
-            
-  validates :nickname,
-            uniqueness: true,
-            presence: true,
-            length: { minimum: 5, maximum: 8 }
-  
-  validates :email,
-            presence: true
             
   def increment_sign_in_count
     self.sign_in_count += 1

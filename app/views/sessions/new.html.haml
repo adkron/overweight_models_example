@@ -1,4 +1,4 @@
-= link_to 'sign up', '/sign_up'
+= link_to 'sign up', new_sign_ups_path
 = form_tag session_path do |f|
   = flash[:error]
   = text_field_tag :nickname, '', placeholder: 'nickname'
