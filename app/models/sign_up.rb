@@ -1,19 +1,8 @@
 class SignUp
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
-  include Mongoid::Validations
-  
-  attr_accessor :user, :nickname, :email
-  
-  delegate :persisted?, :id, to: :user
-  
-  #This is for uniqueness validation could wrap in a module
-  delegate :new?, :relations, :embedded?, :new_record?, to: :user
-  
-  def self.where(*args)
-    User.where *args
-  end
-  #end for uniquness
+  include BackedModel::Base
+  backing_model :user
+  uses_uniquness_validations_against :user
+  attr_accessor :nickname, :email
             
   validates :nickname,
             uniqueness: {message:'is already taken'},

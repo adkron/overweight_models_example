@@ -1,11 +1,8 @@
 class Confirmation
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
-  include ActiveModel::Validations
+  include BackedModel::Base
+  backing_model :user
   
-  attr_accessor :user, :password
-  
-  delegate :persisted?, :id, to: :user
+  attr_accessor :password
   
   validates :password,
             confirmation: true,
