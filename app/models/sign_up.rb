@@ -5,7 +5,7 @@ class SignUp
   
   attr_accessor :user, :nickname, :email
   
-  delegate :persisted?, :nickname, :nickname=, :email, :email=, :id, to: :user
+  delegate :persisted?, :id, to: :user
   
   #This is for uniqueness validation could wrap in a module
   delegate :new?, :relations, :embedded?, :new_record?, to: :user
@@ -30,7 +30,11 @@ class SignUp
   end
   
   def complete
-    user.save if valid?
+    if valid?
+      user.nickname = nickname
+      user.email = email
+      user.save
+    end
   end
   
   def user
