@@ -16,7 +16,7 @@ class SignUp
   #end for uniquness
             
   validates :nickname,
-            uniqueness: true,
+            uniqueness: {message:'is already taken'},
             presence: true,
             length: { minimum: 5, maximum: 8 }
   
