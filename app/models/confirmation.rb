@@ -3,9 +3,9 @@ class Confirmation
   extend ActiveModel::Naming
   include ActiveModel::Validations
   
-  attr_accessor :user
+  attr_accessor :user, :password
   
-  delegate :persisted?, :id, :attributes=, :password, :password_confirmation, to: :user
+  delegate :persisted?, :id, to: :user
   
   validates :password,
             confirmation: true,
@@ -20,6 +20,11 @@ class Confirmation
   end
   
   def complete
-    user.save if valid?
+    user.update_attributes :password => self.password if valid?
+  end
+  
+  #move this to a module
+  def attributes=(attributes)
+    attributes.each { |attr_name, value| send(:"#{attr_name}=", value) }
   end
 end
